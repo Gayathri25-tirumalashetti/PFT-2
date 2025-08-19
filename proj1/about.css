@@ -1,0 +1,166 @@
+/* ==========================
+   1. GLOBAL STYLES & VARIABLES
+   ========================== */
+:root {
+    --primary-color: #2d3e50;
+    --secondary-color: #ffd700;
+    --light-bg: #f9f9f9;
+    --dark-text: #333;
+    --light-text: #fff;
+    --card-bg: #fff;
+    --shadow: 0 2px 8px rgba(0,0,0,0.1);
+    --transition: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: var(--light-bg);
+    color: var(--dark-text);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==========================
+   2. HEADER & NAVIGATION
+   ========================== */
+header {
+    background: var(--primary-color);
+    color: var(--light-text);
+    padding: 15px 0;
+    box-shadow: var(--shadow);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.PFT-logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+}
+
+nav ul li a {
+    color: var(--light-text);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background: var(--light-text);
+    color: var(--primary-color);
+}
+
+/* ==========================
+   3. ABOUT SECTION
+   ========================== */
+.about-page {
+    flex: 1;
+    width: 85%;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.about-page h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.about-page p {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Card container */
+.about-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Card styling */
+.about-card {
+    background: var(--card-bg);
+    padding: 20px;
+    width: 250px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.about-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.about-card p {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Card hover animation */
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ==========================
+   4. FOOTER
+   ========================== */
+footer {
+    background: var(--primary-color);
+    color: var(--light-text);
+    text-align: center;
+    padding: 12px;
+    margin-top: auto;
+}
+
+/* ==========================
+   5. RESPONSIVE DESIGN
+   ========================== */
+@media (max-width: 768px) {
+    .about-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-card {
+        width: 90%;
+    }
+}
