@@ -1,0 +1,195 @@
+/* ==========================
+   1. VARIABLES & GLOBAL RESET
+   ========================== */
+:root {
+    --primary-color: #2d3e50;
+    --secondary-color: #ffd700;
+    --light-bg: #f9f9f9;
+    --light-text: #fff;
+    --dark-text: #333;
+    --card-bg: #fff;
+    --shadow: 0 2px 8px rgba(0,0,0,0.1);
+    --transition: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: var(--light-bg);
+    color: var(--dark-text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==========================
+   2. HEADER & NAVIGATION
+   ========================== */
+header {
+    background: var(--primary-color);
+    color: var(--light-text);
+    padding: 15px 0;
+    box-shadow: var(--shadow);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.PFT-logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+}
+
+nav ul li a {
+    color: var(--light-text);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background: var(--light-text);
+    color: var(--primary-color);
+}
+
+/* ==========================
+   3. SIGNUP PAGE LAYOUT
+   ========================== */
+.signup-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.signup-box {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.signup-box h2 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+/* ==========================
+   4. FORM STYLING
+   ========================== */
+.signup-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.signup-box input {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: var(--transition);
+}
+
+.signup-box input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(45, 62, 80, 0.4);
+}
+
+.signup-box button {
+    background: var(--primary-color);
+    color: var(--light-text);
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.signup-box button:hover {
+    background: #1f2c3a;
+}
+
+/* ==========================
+   5. TEXT & LINKS
+   ========================== */
+.signup-box p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.signup-box a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.signup-box a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================
+   6. FOOTER
+   ========================== */
+footer {
+    background: var(--primary-color);
+    color: var(--light-text);
+    text-align: center;
+    padding: 12px;
+    margin-top: auto;
+}
+
+/* ==========================
+   7. ANIMATIONS
+   ========================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================
+   8. RESPONSIVE
+   ========================== */
+@media (max-width: 500px) {
+    .signup-box {
+        padding: 20px;
+    }
+}

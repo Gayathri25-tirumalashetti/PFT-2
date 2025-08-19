@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance Tracker</title>
+  <link rel="stylesheet" href="tracker.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="tracker-body">
+
+  <!-- HEADER -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-container">
+        <img src="logo.png" alt="Personal Finance Tracker Logo" class="PFT-logo">
+        <span class="logo-text">PFT</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="tracker.html" class="active">Tracker</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signup.html">Signup</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- INTRO SECTION -->
+  <section class="tracker-hero">
+    <div class="hero-content">
+      <h1>Personal Finance Tracker</h1>
+      <p>Effortlessly manage your <strong>income</strong> and <strong>expenses</strong> while keeping track of your <strong>balance</strong> anytime, anywhere.</p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="tracker-container">
+
+    <!-- Add Transaction Form -->
+    <section class="card form-section">
+      <h2>Add Transaction</h2>
+      <form id="transaction-form">
+        <input type="text" id="desc" placeholder="Description (e.g. Salary, Groceries)" required>
+        <input type="number" id="amount" placeholder="Amount" required>
+        <select id="type" required>
+          <option value="">Select Type</option>
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+        <select id="category" required>
+          <option value="">Select Category</option>
+          <option value="food">Food 🍔</option>
+          <option value="transport">Transport 🚗</option>
+          <option value="shopping">Shopping 🛍</option>
+          <option value="bills">Bills 💡</option>
+          <option value="entertainment">Entertainment 🎬</option>
+          <option value="other">Other 📌</option>
+        </select>
+        <button type="submit">Add Transaction</button>
+      </form>
+    </section>
+
+    <!-- Summary -->
+    <section class="card summary-section">
+      <h2>Summary</h2>
+      <div class="summary-box">
+        <p><strong>Total Income:</strong> ₹<span id="total-income">0</span></p>
+        <p><strong>Total Expenses:</strong> ₹<span id="total-expenses">0</span></p>
+        <p><strong>Balance:</strong> ₹<span id="balance">0</span></p>
+      </div>
+    </section>
+
+    <!-- Graph Section -->
+    <section class="card graph-section">
+      <h2>Spending Overview</h2>
+      <canvas id="financeChart"></canvas>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Personal Finance Tracker | Designed with ❤️</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("transaction-form");
+    const totalIncomeEl = document.getElementById("total-income");
+    const totalExpensesEl = document.getElementById("total-expenses");
+    const balanceEl = document.getElementById("balance");
+
+    let income = 0, expenses = 0;
+
+    // Chart.js setup
+    const ctx = document.getElementById("financeChart").getContext("2d");
+    const financeChart = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: ["Income", "Expenses"],
+        datasets: [{
+          label: "Amount (₹)",
+          data: [income, expenses],
+          backgroundColor: ["#4caf50", "#f44336"]
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const amount = parseFloat(document.getElementById("amount").value);
+      const type = document.getElementById("type").value;
+
+      if (type === "income") {
+        income += amount;
+      } else {
+        expenses += amount;
+      }
+
+      // Update summary
+      totalIncomeEl.textContent = income;
+      totalExpensesEl.textContent = expenses;
+      balanceEl.textContent = income - expenses;
+
+      // Update chart
+      financeChart.data.datasets[0].data = [income, expenses];
+      financeChart.update();
+
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
